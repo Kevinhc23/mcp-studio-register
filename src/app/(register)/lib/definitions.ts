@@ -1,30 +1,52 @@
-import { z } from "zod";
+import { refine, z } from "zod";
 import { validateCedula } from "./utils";
 
 export const RegisterFormSchema = z.object({
   name: z
     .string()
-    .min(2, "Tu nombre debe tener como mínimo 2 caracteres")
-    .max(50, "Tu nombre debe tener como máximo 50 caracteres"),
+    .min(2, "Name must be at least 2 characters long")
+    .max(50, "Name must be at most 50 characters long")
+    .refine(
+      (value) => {
+        if (/^[a-zA-ZÀ-ÿ\s]+$/.test(value)) {
+          return true;
+        }
+      },
+      {
+        message: "Name can only contain letters and spaces",
+      }
+    )
+    .trim(),
   lastname: z
     .string()
-    .min(2, "Tu apellido debe tener como mínimo 2 caracteres")
-    .max(50, "Tu apellido debe tener como máximo 50 caracteres"),
-  email: z.email("Por favor, introduce un correo electrónico válido"),
+    .min(2, "Last name must be at least 2 characters long")
+    .max(50, "Last name must be at most 50 characters long")
+    .refine(
+      (value) => {
+        if (/^[a-zA-ZÀ-ÿ\s]+$/.test(value)) {
+          return true;
+        }
+      },
+      {
+        message: "Last name can only contain letters and spaces",
+      }
+    )
+    .trim(),
+  email: z.email("Please enter a valid email address").trim(),
   telephone: z
     .string()
-    .min(9, "El teléfono debe tener como mínimo 9 caracteres")
-    .max(13, "El teléfono debe tener como máximo 13 caracteres")
+    .min(9, "Telephone must be at least 9 characters long")
+    .max(13, "Telephone must be at most 13 characters long")
     .optional()
     .or(z.literal("")),
-  dni: z
-    .string()
-    .min(10, "La cédula debe tener 10 dígitos")
-    .max(10, "La cédula debe tener 10 dígitos")
-    .refine((value) => validateCedula(value), {
-      message:
-        "La cédula ingresada no es válida según el algoritmo de verificación",
-    }),
+  // dni: z
+  //   .string()
+  //   .min(10, "The DNI must have 10 digits")
+  //   .max(10, "The DNI must have 10 digits")
+  //   .refine((value) => validateCedula(value), {
+  //     message:
+  //       "The entered ID is not valid according to the verification algorithm.",
+  //   }),
 });
 
 export type RegisterSchema = z.infer<typeof RegisterFormSchema>;

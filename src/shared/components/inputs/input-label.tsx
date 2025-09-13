@@ -22,14 +22,22 @@ const InputLabel: FC<InputLabelProps> = ({
   ...props
 }) => {
   return (
-    <fieldset className="flex flex-col gap-2">
-      <Label htmlFor={htmlFor}>{label}</Label>
+    <fieldset className="flex flex-col gap-2 w-full">
+      <Label htmlFor={htmlFor} className="text-white">
+        {label}
+      </Label>
       {optional && <span className="text-sm text-gray-500">(Optional)</span>}
-      <Input id={htmlFor} name={htmlFor} required={!optional} {...props} />
+      <Input
+        className="text-white"
+        id={htmlFor}
+        name={htmlFor}
+        required={!optional}
+        {...props}
+      />
       {error ? (
         <span className="text-red-500 text-sm">{error.message}</span>
       ) : hint ? (
-        <span className="text-gray-500 text-sm">{hint}</span>
+        <span className="text-neutral-400 text-sm">{hint}</span>
       ) : null}
     </fieldset>
   );

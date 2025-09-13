@@ -1,4 +1,4 @@
-import HeaderBackground from "@/app/(register)/components/header/HeaderBackground";
+import HeaderBackground from "@/app/(register)/components/header/header-background";
 import {
   Anthropic,
   ModelContextProtocol,
@@ -13,7 +13,7 @@ import {
 import { Marquee, MarqueeContent } from "@/shared/components/ui/marquee";
 import Link from "next/link";
 import { FC } from "react";
-import RegisterForm from "@/app/(register)/components/form/registerForm";
+import RegisterForm from "@/app/(register)/components/form/register-form";
 
 const logos = [
   {
@@ -61,7 +61,7 @@ const logos = [
 const Header: FC = () => {
   return (
     <HeaderBackground>
-      <div className="max-w-7xl flex justify-between gap-12 w-full">
+      <div className="max-w-7xl flex justify-between gap-12 w-full items-center">
         <div className="flex flex-col gap-4 p-4 w-1/2 rounded-lg ">
           <span className="text-xs text-white tracking-widest px-2.5 py-1 shrink-0 truncate rounded-full font-bold w-fit border border-white/20">
             <ModelContextProtocol className="inline h-3 w-3 mr-2 -mt-1 fill-white" />

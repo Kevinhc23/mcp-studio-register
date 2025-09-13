@@ -1,4 +1,4 @@
-import Header from "@/app/(register)/components/header/Header";
+import Header from "@/app/(register)/components/header/header";
 
 const HeaderPage = () => {
   return (

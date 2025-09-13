@@ -11,6 +11,7 @@ export async function register(formData: FormData): Promise<{
     lastname: formData.get("lastname"),
     email: formData.get("email"),
     telephone: formData.get("telephone"),
+    dni: formData.get("dni"),
   });
 
   if (!parsed.success) {
