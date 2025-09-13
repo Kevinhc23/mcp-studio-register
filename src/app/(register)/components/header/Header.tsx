@@ -61,21 +61,21 @@ const logos = [
 const Header: FC = () => {
   return (
     <HeaderBackground>
-      <div className="max-w-7xl flex justify-between gap-12 w-full items-center">
-        <div className="flex flex-col gap-4 p-4 w-1/2 rounded-lg ">
+      <div className="max-w-7xl flex flex-col md:flex-row justify-between gap-12 w-full items-center mx-auto py-12 h-full">
+        <div className="flex flex-col gap-4 w-full md:w-1/2 rounded-lg">
           <span className="text-xs text-white tracking-widest px-2.5 py-1 shrink-0 truncate rounded-full font-bold w-fit border border-white/20">
             <ModelContextProtocol className="inline h-3 w-3 mr-2 -mt-1 fill-white" />
             MCP Creator Studio
           </span>
-          <h1 className="text-5xl text-white font-bold text-balance">
+          <h1 className="text-3xl md:text-5xl text-white font-bold text-balance">
             Less code, more impact: Cloud-ready MCP apps in minutes
           </h1>
-          <p className="text-xl text-gray-100 text-balance mt-4">
+          <p className="text-base md:text-xl text-gray-100 text-balance mt-4">
             Sign up to start building, deploying, and scaling your applications
             quickly and easily with our MCP Creator Studio.
           </p>
           <div className="flex flex-col gap-6 mt-4">
-            <h3 className="text-2xl text-white font-extrabold text-balance">
+            <h3 className="text-xl text-white font-extrabold text-balance">
               Trusted by leading AI platforms
             </h3>
             <Marquee>
@@ -89,7 +89,7 @@ const Header: FC = () => {
             </Marquee>
           </div>
         </div>
-        <div className="p-4 w-1/2 rounded-lg">
+        <div className="w-full md:w-1/2 rounded-lg mt-6 md:mt-0">
           <RegisterForm />
         </div>
       </div>

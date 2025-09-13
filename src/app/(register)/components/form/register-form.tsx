@@ -26,6 +26,9 @@ const RegisterForm = () => {
     mode: "onChange",
   });
 
+  const disableButton = Object.keys(errors).length > 0;
+  console.log("Rendering RegisterForm, disableButton:", disableButton);
+
   const onSubmit = async (data: RegisterSchema) => {
     console.log("onSubmit called", data);
     setIsSubmitting(true);
@@ -64,7 +67,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="px-8 py-12 backdrop-blur-md bg-black/20 rounded-lg shadow-md w-full border border-white/10 flex flex-col gap-2">
+    <div className="px-8 py-12 backdrop-blur-md bg-black/20 rounded-lg shadow-md w-full border border-white/20 flex flex-col gap-2">
       <h3 className="text-2xl font-bold text-white">
         Register for Early Access
       </h3>
@@ -121,10 +124,15 @@ const RegisterForm = () => {
         <div className="pt-2">
           <Button
             type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-white text-black py-2 rounded-md font-semibold hover:bg-white/90 cursor-pointer transition-all"
+            disabled={isSubmitting || disableButton}
+            className={`w-full bg-white text-black py-2 rounded-md font-semibold hover:bg-white/90 cursor-pointer transition-all 
+            ${
+              isSubmitting || disableButton
+                ? "opacity-50 cursor-not-allowed"
+                : ""
+            }`}
           >
-            {isSubmitting ? <Spinner /> : "Register to Early Access"}
+            {isSubmitting ? <Spinner /> : "Register Now"}
           </Button>
         </div>
 
