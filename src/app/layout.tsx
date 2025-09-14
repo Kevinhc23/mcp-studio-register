@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     "AI Tools for Creators",
   ],
   authors: [{ name: "MCP Studio", url: "mcpcreatorstudio.com" }],
-  metadataBase: new URL(process.env.NEXT_PUBLIC_METADATA_BASE ?? "/"),
+  metadataBase: new URL("https://mcpcreatorstudio.com"),
   openGraph: {
     title: "MCP Creator Studio - Register to get early access",
     description:
@@ -62,6 +62,12 @@ export const metadata: Metadata = {
     ],
     locale: "en-US",
     type: "website",
+  },
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "https://mcpcreatorstudio.com",
+    },
   },
   twitter: {
     card: "summary_large_image",
