@@ -1,3 +1,5 @@
+"use client";
+
 import { Toaster } from "sonner";
 import Header from "@/app/components/header/header";
 import { WithContext, SoftwareApplication } from "schema-dts";
