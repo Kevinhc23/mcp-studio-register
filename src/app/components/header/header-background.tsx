@@ -1,11 +1,17 @@
 "use client";
 
-import Plasma from "@/shared/components/ui/plasma";
+import dynamic from "next/dynamic";
+// import Plasma from "@/shared/components/ui/plasma";
 import { FC } from "react";
 
 interface HeaderBackgroundProps {
   children?: React.ReactNode;
 }
+
+const Plasma = dynamic(() => import("@/shared/components/ui/plasma"), {
+  ssr: false,
+  loading: () => null,
+});
 
 const HeaderBackground: FC<HeaderBackgroundProps> = ({ children }) => {
   return (
