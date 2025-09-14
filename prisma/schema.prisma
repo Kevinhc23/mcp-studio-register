@@ -3,19 +3,19 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id       String  @id @default(cuid())
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
   name     String
   lastName String
-  email    String  @unique
+  email    String
   terms    Boolean @default(false)
 
   createdAt DateTime @default(now())
 
-  @@index([email], name: "email_index")
+  @@index([email], name: "email_idx")
   @@map("users")
 }
