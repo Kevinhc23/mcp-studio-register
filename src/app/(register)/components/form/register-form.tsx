@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { toast } from "sonner";
 import InputLabel from "@/shared/components/inputs/input-label";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,6 +12,7 @@ import {
 import { register as registerAction } from "@/app/(register)/actions/register";
 import { Button } from "@/shared/components/ui/button";
 import InputCheckbox from "@/shared/components/inputs/input-checkbox";
+// Usamos un checkbox nativo para integrarlo correctamente con react-hook-form
 
 const RegisterForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -19,6 +20,7 @@ const RegisterForm = () => {
 
   const {
     register,
+    control,
     handleSubmit,
     reset,
     formState: { errors },
@@ -33,6 +35,7 @@ const RegisterForm = () => {
   const onSubmit = async (data: RegisterSchema) => {
     setIsSubmitting(true);
     setSubmitMessage("");
+    console.log("Form data to be submitted:", data);
 
     const formData = new FormData();
     formData.append("name", data.name);
@@ -130,17 +133,30 @@ const RegisterForm = () => {
           {...register("email")}
         />
 
-        <div className="mt-2">
-          <InputCheckbox
-            id="terms"
-            disabled={isSubmitting}
-            {...register("terms", { required: true })}
+        <div className="mt-2 flex items-center space-x-3">
+          <Controller
+            control={control}
+            name="terms"
+            rules={{ required: true }}
+            render={({ field }) => (
+              <InputCheckbox
+                id="terms"
+                disabled={isSubmitting}
+                className="size-5 border border-white checked:border-white/70 checked:bg-white/70 hover:bg-white/10 transition-colors"
+                checked={!!field.value}
+                onCheckedChange={(val: boolean | "indeterminate") =>
+                  field.onChange(Boolean(val))
+                }
+              />
+            )}
+          />
+          <label
+            htmlFor="terms"
+            className="text-sm text-white leading-none select-none"
           >
-            <span className="text-sm text-white">
-              I agree to receive communications about AI news, updates, and
-              offers. I understand I can unsubscribe at any time.
-            </span>
-          </InputCheckbox>
+            I agree to receive communications about AI news, updates, and
+            offers. I understand I can unsubscribe at any time.
+          </label>
         </div>
 
         <div className="pt-2">
