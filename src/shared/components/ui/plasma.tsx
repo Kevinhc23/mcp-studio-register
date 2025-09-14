@@ -157,6 +157,11 @@ export const Plasma: React.FC<PlasmaProps> = ({
 
     if (mouseInteractive) {
       containerRef.current.addEventListener("mousemove", handleMouseMove);
+
+      return containerRef.current.removeEventListener(
+        "mousemove",
+        handleMouseMove
+      );
     }
 
     const setSize = () => {
