@@ -25,7 +25,7 @@ export async function register(formData: FormData): Promise<{
   console.log("Parsed form data:", parsed.data);
 
   const existingUser = await prisma.user.findUnique({
-    where: { email },
+    where: { email: email },
   });
 
   if (existingUser) {

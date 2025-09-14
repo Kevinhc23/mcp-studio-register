@@ -11,11 +11,10 @@ model User {
   id       String  @id @default(auto()) @map("_id") @db.ObjectId
   name     String
   lastName String
-  email    String
+  email    String  @unique
   terms    Boolean @default(false)
 
   createdAt DateTime @default(now())
 
-  @@index([email], name: "email_idx")
   @@map("users")
 }
