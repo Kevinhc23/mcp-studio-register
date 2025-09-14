@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "prebuild": "pnpm run prisma:generate",
-    "build:prod": "pnpm run prisma:generate && pnpm run build",
+    "build:prod": "pnpm run prisma:generate && pnpm run prisma:push && pnpm run build",
     "start": "next start",
     "lint": "biome check",
     "format": "biome format --write",
