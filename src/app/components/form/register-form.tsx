@@ -5,14 +5,10 @@ import { useForm, Controller } from "react-hook-form";
 import { toast } from "sonner";
 import InputLabel from "@/shared/components/inputs/input-label";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  RegisterFormSchema,
-  RegisterSchema,
-} from "@/app/(register)/lib/definitions";
-import { register as registerAction } from "@/app/(register)/actions/register";
+import { register as registerAction } from "@/app/actions/register";
 import { Button } from "@/shared/components/ui/button";
 import InputCheckbox from "@/shared/components/inputs/input-checkbox";
-// Usamos un checkbox nativo para integrarlo correctamente con react-hook-form
+import { RegisterFormSchema, RegisterSchema } from "@/app/lib/definitions";
 
 const RegisterForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -59,7 +55,7 @@ const RegisterForm = () => {
         setSubmitMessage(
           typeof result.message === "string"
             ? result.message
-            : JSON.stringify(result.message),
+            : JSON.stringify(result.message)
         );
       }
 

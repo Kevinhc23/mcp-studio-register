@@ -1,5 +1,5 @@
 import { Toaster } from "sonner";
-import Header from "@/app/(register)/components/header/header";
+import Header from "@/app/components/header/header";
 import { WithContext, SoftwareApplication } from "schema-dts";
 
 const schema: WithContext<SoftwareApplication> = {

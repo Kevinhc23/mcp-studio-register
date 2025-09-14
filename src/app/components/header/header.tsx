@@ -1,4 +1,3 @@
-import HeaderBackground from "@/app/(register)/components/header/header-background";
 import {
   Anthropic,
   ModelContextProtocol,
@@ -13,7 +12,8 @@ import {
 import { Marquee, MarqueeContent } from "@/shared/components/ui/marquee";
 import Link from "next/link";
 import { FC } from "react";
-import RegisterForm from "@/app/(register)/components/form/register-form";
+import HeaderBackground from "@/app/components/header/header-background";
+import RegisterForm from "@/app/components/form/register-form";
 
 const logos = [
   {
@@ -54,7 +54,7 @@ const logos = [
   {
     name: "Grok",
     component: Grok,
-    href: "https://grok.lol/",
+    href: "https://grok.com/",
   },
 ];
 
