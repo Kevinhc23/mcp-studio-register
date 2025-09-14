@@ -33,12 +33,12 @@ export const RegisterFormSchema = z.object({
     )
     .trim(),
   email: z.email("Please enter a valid email address").trim(),
-  telephone: z
-    .string()
-    .min(9, "Telephone must be at least 9 characters long")
-    .max(13, "Telephone must be at most 13 characters long")
-    .optional()
-    .or(z.literal("")),
+  // telephone: z
+  //   .string()
+  //   .min(9, "Telephone must be at least 9 characters long")
+  //   .max(13, "Telephone must be at most 13 characters long")
+  //   .optional()
+  //   .or(z.literal("")),
   // dni: z
   //   .string()
   //   .min(10, "The DNI must have 10 digits")
@@ -47,6 +47,9 @@ export const RegisterFormSchema = z.object({
   //     message:
   //       "The entered ID is not valid according to the verification algorithm.",
   //   }),
+  terms: z.literal(true, {
+    message: "You must accept the terms and conditions",
+  }),
 });
 
 export type RegisterSchema = z.infer<typeof RegisterFormSchema>;

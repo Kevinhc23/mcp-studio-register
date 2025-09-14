@@ -1,3 +1,5 @@
+"use server";
+
 import { prisma } from "@/lib/prisma";
 import { RegisterFormSchema } from "../lib/definitions";
 
@@ -10,8 +12,7 @@ export async function register(formData: FormData): Promise<{
     name: formData.get("name"),
     lastname: formData.get("lastname"),
     email: formData.get("email"),
-    telephone: formData.get("telephone"),
-    dni: formData.get("dni"),
+    terms: formData.get("terms") === "on",
   });
 
   if (!parsed.success) {
@@ -20,7 +21,7 @@ export async function register(formData: FormData): Promise<{
     };
   }
 
-  const { name, lastname, email, telephone } = parsed.data;
+  const { name, lastname, email, terms } = parsed.data;
 
   const existingUser = await prisma.user.findUnique({
     where: { email },
@@ -29,7 +30,7 @@ export async function register(formData: FormData): Promise<{
   if (existingUser) {
     return {
       errors: {
-        email: "Este correo electrónico ya está registrado",
+        email: "This email is already registered",
       },
     };
   }
@@ -39,7 +40,7 @@ export async function register(formData: FormData): Promise<{
       name: name,
       lastName: lastname,
       email: email,
-      telephone: telephone || null,
+      terms: terms,
     },
   });
 

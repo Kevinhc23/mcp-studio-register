@@ -1,8 +1,9 @@
 "use client";
 
-import InputLabel from "@/shared/components/inputs/input-label";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import InputLabel from "@/shared/components/inputs/input-label";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   RegisterFormSchema,
@@ -10,7 +11,7 @@ import {
 } from "@/app/(register)/lib/definitions";
 import { register as registerAction } from "@/app/(register)/actions/register";
 import { Button } from "@/shared/components/ui/button";
-import Spinner from "@/shared/components/ui/spinner";
+import InputCheckbox from "@/shared/components/inputs/input-checkbox";
 
 const RegisterForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -19,6 +20,7 @@ const RegisterForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
     setError,
   } = useForm<RegisterSchema>({
@@ -27,10 +29,8 @@ const RegisterForm = () => {
   });
 
   const disableButton = Object.keys(errors).length > 0;
-  console.log("Rendering RegisterForm, disableButton:", disableButton);
 
   const onSubmit = async (data: RegisterSchema) => {
-    console.log("onSubmit called", data);
     setIsSubmitting(true);
     setSubmitMessage("");
 
@@ -38,7 +38,7 @@ const RegisterForm = () => {
     formData.append("name", data.name);
     formData.append("lastname", data.lastname);
     formData.append("email", data.email);
-    if (data.telephone) formData.append("telephone", data.telephone);
+    formData.append("terms", data.terms ? "on" : "off");
 
     try {
       const result = await registerAction(formData);
@@ -59,15 +59,24 @@ const RegisterForm = () => {
             : JSON.stringify(result.message)
         );
       }
-    } catch (err) {
-      setSubmitMessage("Ha ocurrido un error al enviar el formulario.");
-    }
 
-    setIsSubmitting(false);
+      if (result?.success) {
+        toast.success("Registration successful! We'll be in touch soon.");
+      }
+
+      console.log("Result from register action:", result);
+
+      if (result?.errors?.email) toast.error(result.errors.email as string);
+    } catch (err) {
+      toast.error(err instanceof Error ? err.name : "An error occurred");
+    } finally {
+      setIsSubmitting(false);
+      reset();
+    }
   };
 
   return (
-    <div className="px-8 py-12 backdrop-blur-md bg-black/20 rounded-lg shadow-md w-full border border-white/20 flex flex-col gap-2">
+    <div className="px-6 py-12 backdrop-blur-md bg-black/20 rounded-lg shadow-md w-full border border-white/20 flex flex-col gap-2">
       <h3 className="text-2xl font-bold text-white">
         Register for Early Access
       </h3>
@@ -121,6 +130,19 @@ const RegisterForm = () => {
           {...register("email")}
         />
 
+        <div className="mt-2">
+          <InputCheckbox
+            id="terms"
+            disabled={isSubmitting}
+            {...register("terms", { required: true })}
+          >
+            <span className="text-sm text-white">
+              I agree to receive communications about AI news, updates, and
+              offers. I understand I can unsubscribe at any time.
+            </span>
+          </InputCheckbox>
+        </div>
+
         <div className="pt-2">
           <Button
             type="submit"
@@ -132,7 +154,7 @@ const RegisterForm = () => {
                 : ""
             }`}
           >
-            {isSubmitting ? <Spinner /> : "Register Now"}
+            {isSubmitting ? "Registering..." : "Register Now"}
           </Button>
         </div>
 
