@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MCP CREATOR STUDIO
+
+MCP Creator Studio is a web application designed to facilitate the creation and management of MCP Model Context Protocols. Built with modern web technologies, it offers a user-friendly interface for users to register, log in, and manage their MCP models efficiently.
+
+## Page Register
+
+The registration page allows new users to create an account by providing their email, password, and agreeing to the terms of service. The form includes validation to ensure that all required fields are filled out correctly.
+
+![Register Page Screenshot](./public/register-page-screenshot.png)
+
+## Technologies Used
+
+- **Next.js**: A React framework for building server-side rendered and statically generated web applications.
+- **TypeScript**: A superset of JavaScript that adds static typing to the language
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+- **React Hook Form**: A library for managing form state and validation in React applications.
+- **Zod**: A TypeScript-first schema declaration and validation library.
+- **Prisma**: An ORM (Object-Relational Mapping) tool for database management
+- **Biomes**: A tool for code formatting and linting.
 
 ## Getting Started
 
-First, run the development server:
+To run the MCP Creator Studio locally, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```bash
+   git clone https://github.com/Kevinhc23/mcp-creator-studio
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Navigate to the project directory:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   cd mcp-creator-studio
+   ```
 
-## Learn More
+3. Install the dependencies:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+    pnpm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Set up the environment variables by creating a `.env` file in the root directory and adding the necessary configurations.
+5. Run the development server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   pnpm run dev
+   ```
 
-## Deploy on Vercel
+6. Open your browser and navigate to `http://localhost:3000` to view the application.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Contributions are welcome! If you find a bug or want to add a new feature, please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for
+details.
+more information.
+
+## Acknowledgments
+
+- Thanks to the open-source community for the tools and libraries that made this project possible.
+- Inspired by modern web development practices and user-centric design.
+
+## Contact
+
+For any questions or inquiries, please contact: [Kevin Hernandez](mailto:kevinhernandezcrespo97@gmail.com)
