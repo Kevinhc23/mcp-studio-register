@@ -66,7 +66,6 @@ const schema: WithContext<SoftwareApplication> = {
 export default function Home() {
   posthog.createPersonProfile();
   posthog.capture("$pageview");
-  posthog.identify();
 
   return (
     <>
