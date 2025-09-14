@@ -1,6 +1,7 @@
 import { Toaster } from "sonner";
 import Header from "@/app/components/header/header";
 import { WithContext, SoftwareApplication } from "schema-dts";
+import posthog from "posthog-js";
 
 const schema: WithContext<SoftwareApplication> = {
   "@context": "https://schema.org",
@@ -61,6 +62,10 @@ const schema: WithContext<SoftwareApplication> = {
 };
 
 export default function Home() {
+  posthog.createPersonProfile();
+  posthog.capture("$pageview");
+  posthog.identify();
+
   return (
     <>
       <Header />
