@@ -59,7 +59,7 @@ const RegisterForm = () => {
         setSubmitMessage(
           typeof result.message === "string"
             ? result.message
-            : JSON.stringify(result.message)
+            : JSON.stringify(result.message),
         );
       }
 

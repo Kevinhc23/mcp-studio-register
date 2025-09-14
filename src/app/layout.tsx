@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "MCP Studio", url: "mcpcreatorstudio.com" }],
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_METADATA_BASE ?? "http://localhost:3000"
+    process.env.NEXT_PUBLIC_METADATA_BASE ?? "http://localhost:3000",
   ),
   openGraph: {
     title: "MCP Creator Studio - Register to get early access",

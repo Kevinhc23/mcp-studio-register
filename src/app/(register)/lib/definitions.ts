@@ -14,7 +14,7 @@ export const RegisterFormSchema = z.object({
       },
       {
         message: "Name can only contain letters and spaces",
-      }
+      },
     )
     .trim(),
   lastname: z
@@ -29,7 +29,7 @@ export const RegisterFormSchema = z.object({
       },
       {
         message: "Last name can only contain letters and spaces",
-      }
+      },
     )
     .trim(),
   email: z.email("Please enter a valid email address").trim(),
