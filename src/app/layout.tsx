@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "@/app/globals.css";
 
 const geistSans = Geist({
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "MCP Studio", url: "mcpcreatorstudio.com" }],
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_METADATA_BASE ?? "http://localhost:3000",
+    process.env.NEXT_PUBLIC_METADATA_BASE ?? "http://localhost:3000"
   ),
   openGraph: {
     title: "MCP Creator Studio - Register to get early access",
@@ -98,6 +99,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
