@@ -46,9 +46,7 @@ export const metadata: Metadata = {
     "AI Tools for Creators",
   ],
   authors: [{ name: "MCP Studio", url: "mcpcreatorstudio.com" }],
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_METADATA_BASE ?? "http://localhost:3000"
-  ),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_METADATA_BASE ?? "/"),
   openGraph: {
     title: "MCP Creator Studio - Register to get early access",
     description:
@@ -57,9 +55,7 @@ export const metadata: Metadata = {
     siteName: "MCP Creator Studio",
     images: [
       {
-        url:
-          (process.env.NEXT_PUBLIC_METADATA_BASE ?? "http://localhost:3000") +
-          "/logo.png",
+        url: "/logo.png",
         width: 800,
         height: 600,
       },
@@ -72,10 +68,7 @@ export const metadata: Metadata = {
     title: "MCP Creator Studio - Register to get early access",
     description:
       "Register now to be among the first to experience MCP Creator Studio, the ultimate AI-powered tool for content creators. Sign up today and unlock your creative potential!",
-    images: [
-      (process.env.NEXT_PUBLIC_METADATA_BASE ?? "http://localhost:3000") +
-        "/logo.png",
-    ],
+    images: ["/logo.png"],
     creator: "@mcp_studio",
   },
   robots: {
